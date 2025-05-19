@@ -149,6 +149,9 @@
   <ItemGroup>
     <ClInclude Include="chip8.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SDL3.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

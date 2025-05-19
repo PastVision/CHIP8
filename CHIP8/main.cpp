@@ -5,14 +5,14 @@
 
 const int DISPLAY_WIDTH = 64;
 const int DISPLAY_HEIGHT = 32;
-const int SCALE = 20;
+const int SCALE = 10;
 
 bool initSDL(SDL_Window*& window, SDL_Renderer*& renderer) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
-	window = SDL_CreateWindow("CHIP8 Emulator v1", DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCALE, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("CHIP8 Emulator v1", DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCALE, SDL_WINDOW_VULKAN);
 	if (!window) {
 		std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -32,7 +32,7 @@ void drawDisplay(SDL_Renderer* renderer, uint8_t* gfx) {
 	for (int y = 0; y < DISPLAY_HEIGHT; ++y) {
 		for (int x = 0; x < DISPLAY_WIDTH; ++x) {
 			if (gfx[y * DISPLAY_WIDTH + x]) {
-				SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+				SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 				SDL_FRect rect = { x * SCALE, y * SCALE, SCALE, SCALE };
 				SDL_RenderFillRect(renderer, &rect);
 			}
