@@ -44,7 +44,11 @@ void drawDisplay(SDL_Renderer* renderer, uint8_t* gfx) {
 void main(int argc, char *argv[]) {
 	std::cout << "CHIP8 Emulator v1" << std::endl;
 	CHIP8 chip8;
-	const char* romPath = argv[1];
+	char* romPath = argv[1];
+	if (argv[1] == nullptr) {
+		std::cerr << "Usage: " << argv[0] << " <path_to_rom>" << std::endl;
+		return;
+	}
 	chip8.loadRom(romPath);
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
