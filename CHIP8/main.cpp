@@ -27,17 +27,17 @@ bool initSDL(SDL_Window*& window, SDL_Renderer*& renderer) {
 }
 
 void drawDisplay(SDL_Renderer* renderer, uint8_t* gfx) {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderClear(renderer);
+	SDL_Texture* texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+	uint32_t pixels[DISPLAY_WIDTH * DISPLAY_HEIGHT];
 	for (int y = 0; y < DISPLAY_HEIGHT; ++y) {
 		for (int x = 0; x < DISPLAY_WIDTH; ++x) {
-			if (gfx[y * DISPLAY_WIDTH + x]) {
-				SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-				SDL_Rect rect = { x * SCALE, y * SCALE, SCALE, SCALE };
-				SDL_RenderFillRect(renderer, &rect);
-			}
+			pixels[y * DISPLAY_WIDTH + x] = gfx[y * DISPLAY_WIDTH + x] ? 0x00FF00FF : 0x000000FF;
 		}
 	}
+	SDL_UpdateTexture(texture, NULL, pixels, DISPLAY_WIDTH * sizeof(uint32_t));
+	SDL_RenderClear(renderer);
+	SDL_Rect destRect = { 0, 0, DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCALE };
+	SDL_RenderCopy(renderer, texture, NULL, &destRect);
 	SDL_RenderPresent(renderer);
 }
 
