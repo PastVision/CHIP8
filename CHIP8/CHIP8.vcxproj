@@ -71,20 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\SDL3-3.2.14\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\SDL3-3.2.14\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDL2-2.32.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL2-2.32.6\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\SDL3-3.2.14\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\SDL3-3.2.14\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDL2-2.32.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL2-2.32.6\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\SDL3-3.2.14\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\SDL3-3.2.14\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDL2-2.32.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL2-2.32.6\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\SDL3-3.2.14\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\SDL3-3.2.14\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDL2-2.32.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL2-2.32.6\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,7 +96,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -111,7 +111,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,7 +124,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,7 +139,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -148,9 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chip8.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SDL3.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
