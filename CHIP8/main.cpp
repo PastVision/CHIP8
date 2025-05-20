@@ -6,13 +6,14 @@
 const int DISPLAY_WIDTH = 64;
 const int DISPLAY_HEIGHT = 32;
 const int SCALE = 10;
+const int CPU_CYCLES_FREQ = 10;
 
 bool initSDL(SDL_Window*& window, SDL_Renderer*& renderer) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
-	window = SDL_CreateWindow("CHIP8 Emulator v1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCALE, SDL_WINDOW_VULKAN);
+	window = SDL_CreateWindow("CHIP8 Emulator v1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCALE, SDL_WINDOW_VULKAN | SDL_WINDOW_SHOWN);
 	if (!window) {
 		std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -82,7 +83,7 @@ int main(int argc, char *argv[]) {
 		keyState[0xB] = keys[SDL_SCANCODE_C];
 		keyState[0xF] = keys[SDL_SCANCODE_V];
 		chip8.setKeys(keyState);
-		for (int i = 0; i < 10; ++i) { // Emulate 10 cycles for smoother timing
+		for (int i = 0; i < CPU_CYCLES_FREQ; ++i) { // Emulate 10 cycles for smoother timing
 			chip8.emulateCycle();
 		}
 		if(chip8.drawFlag) {
